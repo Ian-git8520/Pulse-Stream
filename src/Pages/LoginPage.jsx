@@ -14,9 +14,9 @@ const LoginPage = ({ onLogin }) => {
     fetch(`${process.env.REACT_APP_API_URL}/users?email=${formData.email}`)
       .then((res) => res.json())
       .then((users) => {
-        if (users.length > 0 && users[0].password === formData.password) {
-          onLogin(users[0]);
-          setError("");
+        const user = users.find(u => u.password === formData.password);
+        if (user) {
+          onLogin(user);
         } else {
           setError("Invalid email or password.");
         }
@@ -25,10 +25,11 @@ const LoginPage = ({ onLogin }) => {
   }
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-3">Login</h2>
-      <form onSubmit={handleSubmit} className="card p-4 shadow">
-        <input
+    <div className="auth-bg">
+    <div className="container mt-0 vh-100 d-flex align-items-center justify-content-center flex-column">
+      <h2 className=" text-white font-weight-bold  mt-5 ">LOGIN</h2>
+      <form onSubmit={handleSubmit} className="card p-5 shadow w-100 " style={{ maxWidth: "400px" }}>
+        <input 
           className="form-control mb-2"
           type="email"
           name="email"
@@ -36,6 +37,7 @@ const LoginPage = ({ onLogin }) => {
           onChange={handleChange}
           placeholder="Email"
           required
+           
         />
         <input
           className="form-control mb-3"
@@ -48,7 +50,11 @@ const LoginPage = ({ onLogin }) => {
         />
         <button className="btn btn-success">Login</button>
         {error && <p className="text-danger mt-3 text-center">{error}</p>}
+        <p className="mt-3 text-center">
+          Don't have an account? <a href="/Signup">Sign up</a>
+        </p>
       </form>
+    </div>
     </div>
   );
 };

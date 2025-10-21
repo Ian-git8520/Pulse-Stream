@@ -39,3 +39,16 @@
 
 .header-title { font-weight: 700; }
 .header-subtitle { font-weight: 500; color: var(--muted); }
+
+
+.auth-bg {
+  background: url('https://images.unsplash.com/photo-1663640397122-d50df280b1db?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1974') no-repeat center center;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+  
