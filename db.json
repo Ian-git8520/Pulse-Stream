@@ -1,6 +1,15 @@
 {
-  "users": [
-    { "id": 1, "name": "Alice" },
-    { "id": 2, "name": "Bob" }
+  "posts": [
+    {
+      "id": 1,
+      "user": "john_doe",
+      "title": "Traffic Jam on Ngong Road",
+      "description": "Massive jam near Prestige. Avoid if possible!",
+      "mediaUrl": "https://res.cloudinary.com/doehtbdil/image/upload/sample.jpg",
+      "mediaType": "image",
+      "createdAt": "2025-10-21T09:00:00Z",
+      "likes": 5,
+      "comments": [{ "id": 169, "user": "mary", "text": "Thanks for the heads-up!" }]
+    }
   ]
 }

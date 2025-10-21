@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,167 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.card:hover {
+  transform: translateY(-3px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.btn-thumb:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.nav-link:hover {
+  color: var(--primary);
+}
+.navbar {
+  background: linear-gradient(90deg, rgba(13,110,253,0.15), rgba(111,66,193,0.15));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer {
+  background: linear-gradient(90deg, rgba(13,110,253,0.15), rgba(111,66,193,0.15));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+/* Soft shadows and transitions */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Light & Dark mode body */
+body.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #e4e4e4;
+}
+
+/* Navbar polish */
+.navbar {
+  background: linear-gradient(90deg, rgba(13,110,253,0.15), rgba(111,66,193,0.15));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+}
+
+/* Light Mode */
+body.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #0d1117;
+  color: #f0f6fc;
+}
+
+/* Navbar Styling */
+.navbar {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur();
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .navbar {
+  background: rgba(13, 17, 23, 0.8);
+  color: #fff;
+}
+
+/* Cards */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Button polish */
+.btn-outline-secondary {
+  border-radius: 20px;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+:root {
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #6c757d;
+  --primary: #0d6efd;
+}
+
+body.dark {
+  --bg: #0b1220;
+  --card: #0b1220;
+  --text: #e6eef8;
+  --muted: #9aa6b2;
+  --primary: #2bb6a3;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 200ms ease, color 200ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.container {
+  max-width: 980px;
+}
+
+/* card / media */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 6px 20px rgba(14, 20, 25, 0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(14, 20, 25, 0.08);
+}
+
+.post-media {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* thumbs */
+.btn-thumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* navbar polish */
+.navbar {
+  background: linear-gradient(90deg, rgba(13,110,253,0.06), rgba(111,66,193,0.06));
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.theme-toggle {
+  cursor: pointer;
 }
