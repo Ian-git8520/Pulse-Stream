@@ -28,7 +28,8 @@ export default function RegisterPage() {
 
   return (
     <div className="container my-5" style={{ maxWidth: "400px" }}>
-      <h3 className="text-center mb-4">📝 Sign Up</h3>
+      <h1 className="text-center mb-4">PulseStream</h1>
+      <h3 className="text-center mb-4">Sign Up</h3>
       <form className="card p-4 shadow-sm" onSubmit={handleRegister}>
         <div className="mb-3">
           <label className="form-label">Username</label>
@@ -60,6 +61,9 @@ export default function RegisterPage() {
           />
         </div>
         <button type="submit" className="btn btn-success w-100">Create Account</button>
+        <p className="text-center mt-3">
+          Already have an account? <a href="/Login">Log in</a>
+        </p>
       </form>
     </div>
   );

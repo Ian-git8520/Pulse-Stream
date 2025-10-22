@@ -58,10 +58,8 @@ const HomePage = () => {
       <h2 className="text-center mb-4">🌍 Global Incident Feed</h2>
       <div className="row">
         {incidents.map((incident) => (
-          <div key={incident.id} className="col-md-6 mb-4">
-            <Card className="shadow-lg border-0 rounded-4 overflow-hidden">
-              
-              {/* === IMAGE / VIDEO SECTION === */}
+          <div key={incident.id} className="col-lg-4 col-md-6 mb-4 d-flex">
+            <Card className="shadow-lg border-0 rounded-4 overflow-hidden w-100">
               {incident.attachments && incident.attachments.length > 0 ? (
                 incident.attachments[0].endsWith(".mp4") ? (
                   <video
@@ -100,8 +98,8 @@ const HomePage = () => {
                 </div>
               )}
 
-              <Card.Body>
-                <Card.Title className="fw-bold text-primary mt-5 mb-4 ">
+              <Card.Body className="p-4">
+                <Card.Title className="fw-bold text-primary mt-3 mb-3">
                   {incident.type}
                 </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
@@ -109,7 +107,15 @@ const HomePage = () => {
                 </Card.Subtitle>
                 <Card.Text>{incident.description}</Card.Text>
 
-                <div className="d-flex justify-content-between align-items-center">
+                 <Card.Subtitle className="mb-2 text-muted">
+                  {incident.datetime}
+                </Card.Subtitle>
+               
+                 <Card.Subtitle className="mb-2 text-muted">
+                  {incident.date}
+                </Card.Subtitle>
+
+                <div className="d-flex justify-content-between align-items-center mb-2">
                   <Button
                     variant="outline-primary"
                     size="sm"

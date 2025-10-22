@@ -5,43 +5,58 @@ export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [incidents, setIncidents] = useState([]);
 
-  // Load the last signed-up or logged-in user
+  // 🔁 Load the active user whenever it changes in localStorage
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("activeUser"));
-    if (storedUser) {
-      setUser(storedUser);
-    } else {
-      // fallback to last user in db.json
-      fetch(USERS_URL)
-        .then(res => res.json())
-        .then(data => {
-          if (data.length > 0) {
-            const latest = data[data.length - 1];
-            setUser(latest);
-            localStorage.setItem("activeUser", JSON.stringify(latest));
-          }
-        })
-        .catch(() => alert("⚠️ Could not load user profile."));
-    }
+    const loadUser = () => {
+      const storedUser = JSON.parse(localStorage.getItem("activeUser"));
+      if (storedUser) {
+        setUser(storedUser);
+      } else {
+        // fallback to last user in db.json
+        fetch(USERS_URL)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.length > 0) {
+              const latest = data[data.length - 1];
+              setUser(latest);
+              localStorage.setItem("activeUser", JSON.stringify(latest));
+            }
+          })
+          .catch(() => alert("⚠️ Could not load user profile."));
+      }
+    };
+
+    loadUser();
+
+    // Listen for login changes across tabs or app reloads
+    window.addEventListener("storage", loadUser);
+    return () => window.removeEventListener("storage", loadUser);
   }, []);
 
-  // Fetch incidents for that user
+  // 🧾 Load user's incidents
   useEffect(() => {
     if (!user) return;
     fetch(`${INCIDENTS_URL}?user_id=${user.id}`)
-      .then(res => res.json())
-      .then(data => setIncidents(data))
+      .then((res) => res.json())
+      .then((data) => setIncidents(data))
       .catch(() => alert("⚠️ Error loading incidents."));
   }, [user]);
 
-  // Delete an incident
+  // ❌ Delete an incident
   const handleDelete = (id) => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     fetch(`${INCIDENTS_URL}/${id}`, { method: "DELETE" })
       .then(() => {
-        setIncidents(prev => prev.filter(i => i.id !== id));
+        setIncidents((prev) => prev.filter((i) => i.id !== id));
       })
       .catch(() => alert("⚠️ Could not delete incident."));
+  };
+
+  // 🚪 Logout
+  const handleLogout = () => {
+    localStorage.removeItem("activeUser");
+    alert("You have been logged out.");
+    window.location.href = "/login";
   };
 
   if (!user) {
@@ -74,6 +89,12 @@ export default function ProfilePage() {
         <p className="text-center mb-0 text-secondary">
           <strong>Member since:</strong> {new Date().toLocaleDateString()}
         </p>
+
+        <div className="text-center mt-3">
+          <button onClick={handleLogout} className="btn btn-outline-danger btn-sm">
+            Logout
+          </button>
+        </div>
       </div>
 
       <h4 className="fw-bold mb-3 text-primary">🧾 My Reported Incidents</h4>
