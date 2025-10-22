@@ -1,31 +1,34 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import ThemeToggle from "./ThemeToggle";
 
-function AppNavbar() {
+export default function Navbar() {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-      <Container>
-        <Navbar.Brand as={Link} to="/">
-          PulseStream
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            
-            <Nav.Link as={Link} to="/about">
-              About
-            </Nav.Link>
-            <Nav.Link as={Link} to="/login">
-              Login
-            </Nav.Link>
-            <Nav.Link as={Link} to="/signup">
-              Sign Up
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div className="container-fluid">
+        <Link className="navbar-brand fw-bold" to="/">Pulsestream</Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item"><Link className="nav-link" to="/">Feed</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/report">Report</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/profile">Profile</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
+          </ul>
+          <div className="d-flex gap-2">
+            <Link to="/login" className="btn btn-outline-light btn-sm">Login</Link>
+            <Link to="/register" className="btn btn-light btn-sm">Sign Up</Link>
+            <ThemeToggle />
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }
-
-export default AppNavbar;

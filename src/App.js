@@ -1,27 +1,25 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import HomePage from "./Pages/HomePage";
-import SignupPage from "./Pages/SignupPage";
-import AboutPage from "./Pages/AboutPage";
+import ReportPage from "./Pages/ReportPage";
+import ProfilePage from "./Pages/ProfilePage";
 import LoginPage from "./Pages/LoginPage";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import {  } from "framer-motion/client";
+import RegisterPage from "./Pages/RegisterPage";
+import AboutPage from "./Pages/AboutPage";
 
-function App() {
+export default function App() {
   return (
     <>
       <Navbar />
-      <div className="container mt-4">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/report" element={<ReportPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
     </>
   );
 }
-
-export default App;

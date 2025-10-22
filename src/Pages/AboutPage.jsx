@@ -1,15 +1,23 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 
 export default function AboutPage() {
   return (
-    <div className="auth-bg">
-    <Container className="mt-5 p-4 rounded shadow text-white">
-      <h3>About PulseStream</h3>
-      <p>PulseStream lets users post and view incidents happening around them.
-        Live streaming and photos are also supported, making it easy to share real-time updates with the community.
-        Share your experiences and stay informed with PulseStream.</p>
-    </Container>
+    <div className="container my-5">
+      <div className="card p-4 shadow-sm">
+        <h3 className="text-center mb-3">💡 About Pulsestream</h3>
+        <p>
+          <strong>Pulsestream</strong> is a simple global incident reporting and viewing platform
+          designed to let users share real-time events around the world.  
+        </p>
+        <p>
+          Built using <b>React + Bootstrap</b> and powered by a lightweight <b>JSON server</b>,
+          it demonstrates how user interaction, multimedia posts, and modern design
+          can blend seamlessly in a single web app.
+        </p>
+        <p className="text-muted text-center mt-3">
+          Made with by Ian Harding
+        </p>
+      </div>
     </div>
   );
 }
