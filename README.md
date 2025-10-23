@@ -24,5 +24,6 @@ Tech Stack
 
 Deployment
 -> Netlify
-link
+link = https://pulse-stream.netlify.app/
 
+ 
