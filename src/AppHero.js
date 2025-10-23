@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import {
-  AlertTriangle,
   Siren,
-  Users,
   Activity,
   Smartphone,
   BellRing,
@@ -28,12 +26,16 @@ const fadeUp = {
 
 const AppHero = () => {
   const navigate = useNavigate();
+  const aboutRef = useRef(null); // Reference for About section
+
+  const scrollToAbout = () => {
+    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const features = [
     {
       id: 1,
       title: "Report Incidents",
-      icon: <Siren size={40} />,
       description:
         "Instantly report accidents, fires, or emergencies with photos and location.",
       image: carAccident,
@@ -42,16 +44,13 @@ const AppHero = () => {
     {
       id: 2,
       title: "Real-Time Alerts",
-      icon: <AlertTriangle size={40} />,
-      description:
-        "Get notified the moment an incident is reported near you.",
+      description: "Get notified the moment an incident is reported near you.",
       image: fireEmergency,
       delay: 0.4,
     },
     {
       id: 3,
       title: "Community Safety",
-      icon: <Users size={40} />,
       description:
         "See live reports from your area and help keep your community safe.",
       image: communityHelp,
@@ -61,12 +60,9 @@ const AppHero = () => {
 
   return (
     <div className="hero-container text-white position-relative overflow-hidden">
-      
       <div className="animated-bg"></div>
 
-      
-
-
+      {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -79,30 +75,35 @@ const AppHero = () => {
           </div>
 
           <div className="d-none d-md-flex gap-4">
-            <Link to="/feed" className="nav-link text-light fw-semibold">
+            <NavLink to="/feed" className="nav-link text-light fw-semibold">
               Feed
-            </Link>
-            <Link to="/report" className="nav-link text-light fw-semibold">
+            </NavLink>
+            <NavLink to="/report" className="nav-link text-light fw-semibold">
               Report
-            </Link>
-            <Link to="/profile" className="nav-link text-light fw-semibold">
+            </NavLink>
+            <NavLink to="/profile" className="nav-link text-light fw-semibold">
               Profile
-            </Link>
-            <Link to="/about" className="nav-link text-light fw-semibold">
+            </NavLink>
+            {/* About scroll button */}
+            <button
+              onClick={scrollToAbout}
+              className="nav-link text-light fw-semibold bg-transparent border-0"
+              style={{ cursor: "pointer" }}
+            >
               About
-            </Link>
+            </button>
           </div>
 
-          <Link
+          <NavLink
             to="/login"
             className="btn btn-danger rounded-pill fw-bold px-4 py-2 text-decoration-none"
           >
             Login
-          </Link>
+          </NavLink>
         </div>
       </motion.nav>
 
-     
+      {/* Hero Section */}
       <div className="container text-center py-5" style={{ paddingTop: "7rem" }}>
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
@@ -136,7 +137,6 @@ const AppHero = () => {
             <Siren size={22} /> Report Now
           </Link>
 
-          
           <button
             onClick={() => navigate("/feed")}
             className="btn btn-outline-light btn-lg rounded-pill px-5 fw-semibold hover-bright"
@@ -146,7 +146,7 @@ const AppHero = () => {
         </motion.div>
       </div>
 
-      
+      {/* Features Section */}
       <div className="container py-5">
         <div className="row g-4">
           {features.map((feature) => (
@@ -166,7 +166,6 @@ const AppHero = () => {
                   className="card-img feature-bg"
                 />
                 <div className="card-img-overlay d-flex flex-column justify-content-end p-4 bg-gradient-dark">
-                  <div className="mb-3">{feature.icon}</div>
                   <h5 className="fw-bold">{feature.title}</h5>
                   <p className="small">{feature.description}</p>
                 </div>
@@ -176,7 +175,7 @@ const AppHero = () => {
         </div>
       </div>
 
-      
+      {/* Community Impact Section */}
       <motion.section
         className="py-5 bg-dark text-center"
         variants={fadeUp}
@@ -211,9 +210,7 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-     
-
-
+      {/* Testimonies Section (RESTORED) */}
       <motion.section
         className="py-5 bg-gradient-dark"
         variants={fadeUp}
@@ -222,7 +219,7 @@ const AppHero = () => {
         viewport={{ once: true }}
       >
         <div className="container text-center">
-          <h2 className="fw-bold display-5 mb-5 gradient-text">How It Works</h2>
+          <h2 className="fw-bold display-5 mb-5 gradient-text">Testimonies</h2>
           <div className="row g-4">
             {[
               {
@@ -258,9 +255,29 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      
+      {/* About Us Section */}
+      <motion.section
+        ref={aboutRef}
+        className="py-5 bg-gradient-dark text-center"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <div className="container">
+          <h2 className="fw-bold display-5 mb-4 gradient-text">About Us</h2>
+          <p className="lead text-light mx-auto" style={{ maxWidth: "800px" }}>
+            PulseStream was born from the vision of creating a safer, more connected
+            world. We believe that every second counts during emergencies, and through
+            technology, we empower communities to act faster, stay informed, and
+            protect one another. From real-time reporting to instant alerts, we bridge
+            the gap between danger and response — turning ordinary citizens into
+            everyday heroes.
+          </p>
+        </div>
+      </motion.section>
 
-
+      {/* CTA Section */}
       <motion.section
         className="py-5 text-center cta-section"
         variants={fadeUp}
@@ -276,7 +293,6 @@ const AppHero = () => {
             Be part of a real-time safety network that saves lives every day.
           </p>
 
-         
           <Link
             to="/register"
             className="btn btn-lg btn-warning text-dark fw-bold rounded-pill px-5"
@@ -286,9 +302,7 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      
-
-
+      {/* Footer */}
       <footer className="py-4 bg-black text-center text-light small">
         <motion.p
           variants={fadeUp}
@@ -305,7 +319,6 @@ const AppHero = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="me-2 text-danger" />
           Built by Ian for a safer world.
         </motion.p>
       </footer>

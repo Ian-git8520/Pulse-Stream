@@ -1,5 +1,7 @@
+// src/Pages/FeedPage.jsx
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const FeedPage = () => {
   const [incidents, setIncidents] = useState([]);
@@ -55,67 +57,78 @@ const FeedPage = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="text-center mb-4">🌍 Global Incident Feed</h2>
+      <h2 className="text-center mb-4 fw-bold text-primary">
+        🌍 Global Incident Feed
+      </h2>
       <div className="row">
         {incidents.map((incident) => (
           <div key={incident.id} className="col-lg-4 col-md-6 mb-4 d-flex">
             <Card className="shadow-lg border-0 rounded-4 overflow-hidden w-100">
-              {incident.attachments && incident.attachments.length > 0 ? (
-                incident.attachments[0].endsWith(".mp4") ? (
-                  <video
-                    src={incident.attachments[0]}
-                    controls
-                    className="w-100"
-                    style={{
-                      height: "300px",
-                      objectFit: "cover",
-                      borderBottom: "3px solid #007bff",
-                    }}
-                  />
+              <Link
+                to={`/incident/${incident.id}`}
+                className="text-decoration-none text-dark"
+              >
+                {incident.attachments && incident.attachments.length > 0 ? (
+                  incident.attachments[0].endsWith(".mp4") ? (
+                    <video
+                      src={incident.attachments[0]}
+                      controls
+                      className="w-100"
+                      style={{
+                        height: "300px",
+                        objectFit: "cover",
+                        borderBottom: "3px solid #007bff",
+                      }}
+                    />
+                  ) : (
+                    <Card.Img
+                      variant="top"
+                      src={incident.attachments[0]}
+                      alt="Incident"
+                      className="w-100"
+                      style={{
+                        height: "300px",
+                        objectFit: "cover",
+                        borderBottom: "3px solid #007bff",
+                      }}
+                    />
+                  )
                 ) : (
-                  <Card.Img
-                    variant="top"
-                    src={incident.attachments[0]}
-                    alt="Incident"
-                    className="w-100"
+                  <div
+                    className="bg-secondary text-white d-flex align-items-center justify-content-center"
                     style={{
                       height: "300px",
-                      objectFit: "cover",
-                      borderBottom: "3px solid #007bff",
+                      fontSize: "1.2rem",
+                      fontWeight: "500",
                     }}
-                  />
-                )
-              ) : (
-                <div
-                  className="bg-secondary text-white d-flex align-items-center justify-content-center"
-                  style={{
-                    height: "300px",
-                    fontSize: "1.2rem",
-                    fontWeight: "500",
-                  }}
-                >
-                  No Image or Video Available
-                </div>
-              )}
+                  >
+                    No Image or Video Available
+                  </div>
+                )}
+              </Link>
 
               <Card.Body className="p-4">
-                <Card.Title className="fw-bold text-primary mt-3 mb-3">
-                  {incident.type}
-                </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  {incident.location}
-                </Card.Subtitle>
-                <Card.Text>{incident.description}</Card.Text>
+                <Link
+                  to={`/incident/${incident.id}`}
+                  className="text-decoration-none text-dark"
+                >
+                  <Card.Title className="fw-bold text-primary mt-3 mb-3">
+                    {incident.type}
+                  </Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    {incident.location}
+                  </Card.Subtitle>
+                  <Card.Text>{incident.description}</Card.Text>
 
-                 <Card.Subtitle className="mb-2 text-muted">
-                  {incident.datetime}
-                </Card.Subtitle>
-               
-                 <Card.Subtitle className="mb-2 text-muted">
-                  {incident.date}
-                </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted small">
+                    {incident.datetime}
+                  </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted small">
+                    {incident.date}
+                  </Card.Subtitle>
+                </Link>
 
-                <div className="d-flex justify-content-between align-items-center mb-2">
+                <div className="d-flex justify-content-between align-items-center mb-2 mt-3">
                   <Button
                     variant="outline-primary"
                     size="sm"

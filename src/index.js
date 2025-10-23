@@ -14,7 +14,7 @@ import ProfilePage from "./Pages/ProfilePage";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import AboutPage from "./Pages/AboutPage";
-
+import IncidentDetail from "./Pages/IncidentDetail";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -29,6 +29,7 @@ root.render(
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/feed" element={<FeedPage />} />
+        <Route path="/incident/:id" element={<IncidentDetail />} />
       </Routes>
   </BrowserRouter>
 
