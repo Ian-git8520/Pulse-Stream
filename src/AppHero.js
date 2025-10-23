@@ -4,12 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   AlertTriangle,
   Siren,
-  MapPin,
   Users,
-  Shield,
   Activity,
   Smartphone,
-  Globe,
   BellRing,
   CheckCircle,
 } from "lucide-react";
@@ -64,10 +61,12 @@ const AppHero = () => {
 
   return (
     <div className="hero-container text-white position-relative overflow-hidden">
-      {/* Background Gradient Animation */}
+      
       <div className="animated-bg"></div>
 
-      {/* Navbar */}
+      
+
+
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -103,7 +102,7 @@ const AppHero = () => {
         </div>
       </motion.nav>
 
-      {/* Hero Section */}
+     
       <div className="container text-center py-5" style={{ paddingTop: "7rem" }}>
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
@@ -137,7 +136,7 @@ const AppHero = () => {
             <Siren size={22} /> Report Now
           </Link>
 
-          {/* ✅ View Live Map now navigates to Feed page */}
+          
           <button
             onClick={() => navigate("/feed")}
             className="btn btn-outline-light btn-lg rounded-pill px-5 fw-semibold hover-bright"
@@ -147,7 +146,7 @@ const AppHero = () => {
         </motion.div>
       </div>
 
-      {/* Features Section */}
+      
       <div className="container py-5">
         <div className="row g-4">
           {features.map((feature) => (
@@ -177,7 +176,7 @@ const AppHero = () => {
         </div>
       </div>
 
-      {/* 📊 Community Impact Section */}
+      
       <motion.section
         className="py-5 bg-dark text-center"
         variants={fadeUp}
@@ -212,7 +211,9 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      {/* ⚙️ How It Works Section */}
+     
+
+
       <motion.section
         className="py-5 bg-gradient-dark"
         variants={fadeUp}
@@ -257,7 +258,9 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      {/* 🚀 CTA Section */}
+      
+
+
       <motion.section
         className="py-5 text-center cta-section"
         variants={fadeUp}
@@ -273,7 +276,7 @@ const AppHero = () => {
             Be part of a real-time safety network that saves lives every day.
           </p>
 
-          {/* ✅ Get Started now links to Register page */}
+         
           <Link
             to="/register"
             className="btn btn-lg btn-warning text-dark fw-bold rounded-pill px-5"
@@ -283,7 +286,9 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      {/* 🌍 Footer */}
+      
+
+
       <footer className="py-4 bg-black text-center text-light small">
         <motion.p
           variants={fadeUp}
@@ -300,8 +305,8 @@ const AppHero = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Globe size={16} className="me-2 text-danger" />
-          Built with ❤️ for a safer world.
+          <div className="me-2 text-danger" />
+          Built by Ian for a safer world.
         </motion.p>
       </footer>
     </div>

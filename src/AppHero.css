@@ -149,9 +149,9 @@ html {
     transform: translateX(5%);
   }
 }
-.navbar,
+
 .container,
 .cta-section {
   position: relative;
-  z-index: 2; /* ✅ keeps them above the background */
+  z-index: 2; 
 }
