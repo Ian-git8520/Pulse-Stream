@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 
+
+
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -25,7 +27,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   "nav-link" + (isActive ? " active fw-bold text-light" : "")
                 }
-                to="/"
+                to="/feed"
               >
                 Feed
               </NavLink>
