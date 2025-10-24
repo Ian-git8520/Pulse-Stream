@@ -20,16 +20,16 @@ export default function LoginPage() {
         );
 
         if (user) {
-          // ✅ Save active user to localStorage
+          
           localStorage.setItem("activeUser", JSON.stringify(user));
 
           alert(`Welcome back, ${user.username || user.email}!`);
-          navigate("/profile"); // redirect to profile page
+          navigate("/profile");
         } else {
-          alert("❌ Invalid credentials! Try again or sign up.");
+          alert("Invalid credentials! Try again or sign up.");
         }
       })
-      .catch(() => alert("⚠️ Server error. Please ensure JSON Server is running."));
+      .catch(() => alert("Server error. Please ensure JSON Server is running."));
   };
 
   return (

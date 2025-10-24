@@ -12,7 +12,7 @@ const middlewares = jsonServer.defaults({ static: "public" });
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
-// optionally add a timestamp on POST
+
 server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = new Date().toISOString();

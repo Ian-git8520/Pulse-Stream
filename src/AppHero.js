@@ -175,7 +175,7 @@ const AppHero = () => {
         </div>
       </div>
 
-      {/* Community Impact Section */}
+      
       <motion.section
         className="py-5 bg-dark text-center"
         variants={fadeUp}
@@ -210,7 +210,7 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      {/* Testimonies Section (RESTORED) */}
+      
       <motion.section
         className="py-5 bg-gradient-dark"
         variants={fadeUp}
@@ -255,7 +255,7 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      {/* About Us Section */}
+      
       <motion.section
         ref={aboutRef}
         className="py-5 bg-gradient-dark text-center"
@@ -277,7 +277,7 @@ const AppHero = () => {
         </div>
       </motion.section>
 
-      {/* CTA Section */}
+      
       <motion.section
         className="py-5 text-center cta-section"
         variants={fadeUp}

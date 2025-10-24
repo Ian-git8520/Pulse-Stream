@@ -48,7 +48,7 @@ export default function ReportPage() {
         setImage("");
         setVideo("");
       })
-      .catch(() => alert("⚠️ Error: Please ensure your JSON server is running."));
+      .catch(() => alert(" Error: Please ensure your JSON server is running."));
   };
 
   return (

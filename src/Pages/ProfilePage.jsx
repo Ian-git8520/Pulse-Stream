@@ -5,14 +5,13 @@ export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [incidents, setIncidents] = useState([]);
 
-  // 🔁 Load the active user whenever it changes in localStorage
   useEffect(() => {
     const loadUser = () => {
       const storedUser = JSON.parse(localStorage.getItem("activeUser"));
       if (storedUser) {
         setUser(storedUser);
       } else {
-        // fallback to last user in db.json
+      //  ------fall back to previous user-------
         fetch(USERS_URL)
           .then((res) => res.json())
           .then((data) => {
@@ -22,37 +21,37 @@ export default function ProfilePage() {
               localStorage.setItem("activeUser", JSON.stringify(latest));
             }
           })
-          .catch(() => alert("⚠️ Could not load user profile."));
+          .catch(() => alert("Could not load user profile."));
       }
     };
 
     loadUser();
 
-    // Listen for login changes across tabs or app reloads
+    
     window.addEventListener("storage", loadUser);
     return () => window.removeEventListener("storage", loadUser);
   }, []);
 
-  // 🧾 Load user's incidents
+ 
   useEffect(() => {
     if (!user) return;
     fetch(`${INCIDENTS_URL}?user_id=${user.id}`)
       .then((res) => res.json())
       .then((data) => setIncidents(data))
-      .catch(() => alert("⚠️ Error loading incidents."));
+      .catch(() => alert(" Error loading incidents."));
   }, [user]);
 
-  // ❌ Delete an incident
+ 
   const handleDelete = (id) => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     fetch(`${INCIDENTS_URL}/${id}`, { method: "DELETE" })
       .then(() => {
         setIncidents((prev) => prev.filter((i) => i.id !== id));
       })
-      .catch(() => alert("⚠️ Could not delete incident."));
+      .catch(() => alert(" Could not delete incident."));
   };
 
-  // 🚪 Logout
+
   const handleLogout = () => {
     localStorage.removeItem("activeUser");
     alert("You have been logged out.");
@@ -97,7 +96,7 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <h4 className="fw-bold mb-3 text-primary">🧾 My Reported Incidents</h4>
+      <h4 className="fw-bold mb-3 text-primary">My Reported Incidents</h4>
 
       {incidents.length === 0 ? (
         <p className="text-muted">You haven’t reported any incidents yet.</p>
@@ -108,10 +107,10 @@ export default function ProfilePage() {
               <h5 className="card-title text-primary">{incident.title}</h5>
               <p>{incident.description}</p>
               <p className="text-muted mb-1">
-                <strong>📍 Location:</strong> {incident.location}
+                <strong>Location:</strong> {incident.location}
               </p>
               <p className="text-muted">
-                <strong>📅 Date:</strong> {incident.datetime || "N/A"}
+                <strong>Date:</strong> {incident.datetime || "N/A"}
               </p>
 
               {incident.image && (

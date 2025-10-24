@@ -14,7 +14,7 @@ const IncidentDetail = () => {
       .then(setIncident)
       .catch(console.error);
 
-    // Detect system dark mode or Bootstrap dark mode
+    
     const checkDark = () =>
       setIsDarkMode(
         document.body.classList.contains("bg-dark") ||
@@ -132,7 +132,7 @@ const IncidentDetail = () => {
       {/* Relevant media */}
       {incident.attachments && incident.attachments.length > 1 && (
         <div className="mt-5">
-          <h4 className="fw-bold mb-3 text-primary">📸 Additional Media</h4>
+          <h4 className="fw-bold mb-3 text-primary">Additional Media</h4>
           <div className="row">
             {incident.attachments.slice(1).map((file, index) => (
               <div key={index} className="col-md-4 mb-4">

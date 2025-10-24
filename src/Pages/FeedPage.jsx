@@ -1,4 +1,3 @@
-// src/Pages/FeedPage.jsx
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
